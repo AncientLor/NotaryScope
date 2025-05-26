@@ -23,12 +23,11 @@ function renderCards() {
     const card = document.createElement('div');
     card.className = "bg-white dark:bg-gray-800 p-4 rounded-2xl shadow border dark:border-gray-700";
     card.innerHTML = `
-      <h2 class="text-xl font-semibold mb-1">${n["Notary Name"] || "Unnamed"}</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">${n["Business Name"] || "Independent"}</p>
-      <p><strong>Commission #:</strong> ${n["Commission Nbr"]}</p></p>
-      <p><strong>Address:</strong> ${n["Street Address"]}, ${n["City"]}, ${n["State"]} ${n["Zip Code"]}</p>
-      <p><strong>County #:</strong> ${n["County Nbr"]}</p>
-      <p><strong>Expires:</strong> ${n["Expiration Date"]}</p>
+      <h3 class="text-xl font-bold mb-1" style="color: #E5E5E5;">${n["Notary Name"] || "Unnamed"}</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-300 mb-2" style="color: #FFCB3C;">#${n["Commission Nbr"]}</p>
+      <p class="text-sm text-gold-600" style="color: #E5E5E5;">| ${n["Business Name"] || "Independent"}</p>
+      <p>| ${n["City"]}, ${n["State"]} ${n["Zip Code"]}</p>
+      <p>Valid Until</strong> ${n["Expiration Date"]}</p>
     `;
     container.appendChild(card);
   });
@@ -71,46 +70,6 @@ document.getElementById('search').addEventListener('input', (e) => {
   );
   currentPage = 1;
   renderCards();
-});
-
-// Export current visible cards
-document.getElementById('exportBtn').addEventListener('click', () => {
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
-  const dataToExport = filtered.slice(start, end);
-
-  const blob = new Blob([JSON.stringify(dataToExport, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'notary_cards_export.json';
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-// Print cards
-document.getElementById('printBtn').addEventListener('click', () => {
-  window.print();
-});
-
-// Share cards (Web Share API)
-document.getElementById('shareBtn').addEventListener('click', async () => {
-  const shareData = {
-    title: 'Notary Business Cards',
-    text: 'View these notary business cards.',
-    url: window.location.href
-  };
-
-  try {
-    if (navigator.share) {
-      await navigator.share(shareData);
-    } else {
-      alert("Sharing not supported in this browser.");
-    }
-  } catch (err) {
-    console.error("Share failed:", err);
-  }
 });
 
 loadData();
