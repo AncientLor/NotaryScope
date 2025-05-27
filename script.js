@@ -23,11 +23,14 @@ function renderCards() {
     const card = document.createElement('div');
     card.className = "bg-white dark:bg-gray-800 p-4 rounded-2xl shadow border dark:border-gray-700";
     card.innerHTML = `
-      <h3 class="text-xl font-bold mb-1" style="color: #E5E5E5;">${n["Notary Name"] || "Unnamed"}</h3>
-      <p class="text-sm text-gray-500 dark:text-gray-300 mb-2" style="color: #FFCB3C;">#${n["Commission Nbr"]}</p>
-      <p class="text-sm text-gold-600" style="color: #E5E5E5;">| ${n["Business Name"] || "Independent"}</p>
-      <p>| ${n["City"]}, ${n["State"]} ${n["Zip Code"]}</p>
-      <p>Valid Until</strong> ${n["Expiration Date"]}</p>
+      <h4 class="text-l font-bold mb-1" style="color: #E5E5E5; line-height: 1.0;">${n["Notary Name"] || "Unnamed"}</h4>
+      <div style="line-height: 1.5">
+        <span class="text-sm text-gray-500 dark:text-gray-300 mb-1" style="color: #FFCB3C;">#${n["Commission Nbr"]}</span>
+        <span class="text-sm" style="color: #BFBDC1;"><i> | Expires ${n["Expiration Date"]}</i></span>
+      </div>
+      <p class="text-sm text-gold-600" style="color: #E5E5E5;">🏢 ${n["Business Name"] || "Independent"}</p>
+      <p class="text-sm" style="color: #E5E5E5;">📍 ${n["City"]}, ${n["State"]} ${n["Zip Code"]}</p>
+      
     `;
     container.appendChild(card);
   });
