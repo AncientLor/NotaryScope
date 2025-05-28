@@ -1,4 +1,5 @@
 import json
+import sys
 import time
 import requests
 import zipfile
@@ -36,7 +37,7 @@ def get_active_notary_list()->bytes:
     if r.status_code != 200:
         msg: str = f"[ERROR] Status Code: {r.status_code} Error Message: {r.content}"
         add_log(msg)
-        exit(1)
+        sys.exit(1)
 
     return r.content
 
@@ -54,7 +55,7 @@ def extract_notary_list(zip_bytes: bytes)->bytes:
         if target_file not in zf.namelist():
             msg: str = f"[ERROR] File {target_file} not found."
             add_log(msg)
-            exit(1)
+            sys.exit(1)
 
         # Extract Target from Archive
         text_bytes: bytes = zf.read(target_file)
@@ -124,7 +125,7 @@ def backup_master_notary_file()->None:
         add_log(msg)
         msg = f"[ERROR] Master: {master_checksum}\nBackup: {backup_checksum}"
         add_log(msg)
-        exit(2)
+        sys.exit(2)
     
     msg: str = f"[OK] Active Notary File Successfully Backed Up"
     add_log(msg)
@@ -158,4 +159,4 @@ if __name__ == "__main__":
     msg: str = f"[OK] Active Notary Listing Successfully Updated."
     add_log(msg)
     
-    exit(0)
+    sys.exit()

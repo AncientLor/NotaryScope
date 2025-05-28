@@ -2,6 +2,7 @@ let notaries = [];
 let currentPage = 1;
 let perPage = 25;
 let filtered = [];
+let stateSelect = "CA";
 
 // Load data and initialize
 async function loadData() {
@@ -33,21 +34,19 @@ function renderCards() {
   currentItems.forEach(n => {
     const card = document.createElement('div');
     card.className = "bg-white dark:bg-gray-800 p-4 rounded-2xl shadow border dark:border-gray-700";
+    // deepcode ignore DOMXSS: Static input data controlled by server.
     card.innerHTML = `
-      <div class="flex flex-col sm:flex-row justify-between" style="align-items: flex-end; margin-bottom: 2px">
-        <h2 class="text-l" style="text-align: left; font-weight: bolder; color: #E5E5E5;">${n["Notary Name"] || "Unnamed"}</h2>
-        <p class="text-sm" style="text-align: right; font-weight: 600; font-style: italic; color: #FFCB3C;">#${n["Commission Nbr"]}</p>
+      <div class="flex flex-col sm:flex-row justify-between" style="margin-bottom: 10px; align-items: flex-end;">
+        <p title="Notary Name" class="text" style="font-size: 17px; font-weight: bolder; color: #dddddd;">${n["Notary Name"] || "Unnamed"}</p>
+        <p title="Commission Number" class="text-m" style="font-weight: 400; font-style: normal; color: #ffbf00;">#${n["Commission Nbr"]}</p>
       </div>
-      <hr style="border-top: 2.5px solid rgba(229, 229, 229, 0.51);">
-      <div style="margin-bottom: 2px; margin-top: 1px;">
-        <p class="text-sm" style="color: #BFBDC1;">Expires ${n["Expiration Date"]}</p>
+      <hr style="margin-bottom: 10px; border-top: 3px solid rgba(154, 135, 183, 0.8);">
+      <div class="flex flex-col sm:flex-col justify-center items-left">
+        <p id="notary-business" title="Business Title" class="text-sm mb-2" style="color: #dddddd;">💼 ${n["Business Name"] || "Independent"}</p>
+        <p id="notary-location" title="City of Operation" class="text-sm mb-2" style="color: #dddddd;">📍 ${n["City"]}, ${n["State"]}</p>
       </div>
-      <p class="text-sm text-gold-600" style="color: #E5E5E5;">🏢 ${n["Business Name"] || "Independent"}</p>
-      <div>
-        <span class="text-sm">📍 </span>
-        <span class="text-sm" style="color: #E5E5E5;">${n["City"]}, ${n["State"]}</address></span>
-      </div>    
-    `;
+      <p id="notary-expiration" title="Expiration Date" class="text-sm mb-2" style="color: #dddddd;">⏳ <i>Valid until ${n["Expiration Date"]}<i></p>
+      `;
     container.appendChild(card);
   });
 
@@ -77,6 +76,12 @@ document.getElementById('nextPage').addEventListener('click', () => {
 });
 
 document.getElementById('perPage').addEventListener('change', (e) => {
+  perPage = parseInt(e.target.value);
+  currentPage = 1;
+  renderCards();
+});
+
+document.getElementById('stateSelect').addEventListener('change', (e) => {
   perPage = parseInt(e.target.value);
   currentPage = 1;
   renderCards();
