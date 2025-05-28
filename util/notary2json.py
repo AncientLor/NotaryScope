@@ -9,10 +9,10 @@ from hashlib import file_digest
 
 WORKDIR: Path = Path(__file__).parent     # Script Directory -> /FULL/PATH/NotaryScope/util
 PROOT: Path = WORKDIR.parent              # Project Root -> /FULL/PATH/NotaryScope
-BACKUPDIR: str = f"{PROOT}/backup"
-TEMPDIR: str = f"{PROOT}/tmp"
-LOGFILE: str = f"{PROOT}/log/update.log"
-ACTIVE_NOTARY_MASTER_FILE = f"{PROOT}/notaries.json"
+BACKUPDIR: Path = Path(f"{PROOT}/backup")
+TEMPDIR: Path = Path(f"{PROOT}/tmp")
+LOGFILE: Path = Path(f"{PROOT}/log/update.log")
+ACTIVE_NOTARY_MASTER_FILE: Path = Path(f"{PROOT}/notaries.json")
 ACTIVE_NOTARY_LIST_URL: str = 'https://notary.cdn.sos.ca.gov/export/active-notary.zip'
 
 
@@ -46,7 +46,7 @@ def get_active_notary_list()->bytes:
 def extract_notary_list(zip_bytes: bytes)->bytes:
 
     target_file: str = 'active-notary.txt'
-    output_file: str = f"{TEMPDIR}/active-notary_{filedate()}.txt"
+    output_file: Path = Path(f"{TEMPDIR}/active-notary_{filedate()}.txt")
 
     # Create Handle for Zip Archive
     with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
@@ -62,16 +62,16 @@ def extract_notary_list(zip_bytes: bytes)->bytes:
         with open(output_file, 'wb') as outfile:
             outfile.write(text_bytes)
     
-        msg: str = f"[OK] Extracted {target_file} from \"active-notary.zip\" to {output_file}"
-        add_log(msg)
+    msg: str = f"[OK] Extracted {target_file} from \"active-notary.zip\" to {output_file}"
+    add_log(msg)
         
-        return text_bytes
+    return output_file
 
 
 # Convert Active Notary Text File to JSON Format
-def convert_text_to_json(input_bytes: bytes, output_json)->list[dict]:
+def convert_text_to_json(input_text, output_json)->list[dict]:
     
-    with open(input_bytes, 'rb') as instream:
+    with open(input_text, 'r', encoding='utf-8') as instream:
         lines: list[str] = instream.readlines()
 
     # Extract Header Fields from First Line
@@ -99,7 +99,7 @@ def convert_text_to_json(input_bytes: bytes, output_json)->list[dict]:
     msg: str = f"[OK] Conversion complete. {len(entries)} entries written to {output_json}"
     add_log(msg)
 
-    return entries
+    
 
 
 def backup_master_notary_file()->None:
@@ -107,11 +107,11 @@ def backup_master_notary_file()->None:
     if not Path.exists(ACTIVE_NOTARY_MASTER_FILE):
         return
     
-    backup_file: str = f"{BACKUPDIR}/notaries-{filedate()}.json" 
+    backup_file: Path = Path(f"{BACKUPDIR}/notaries-{filedate()}.json") 
 
-    with open(ACTIVE_NOTARY_MASTER_FILE, 'rb') as m:
-        with open(backup_file, 'wb') as b:
-            b.write(m.readinto())
+    with open(ACTIVE_NOTARY_MASTER_FILE, 'r', encoding='utf-8') as m:
+        with open(backup_file, 'w', encoding='utf-8') as b:
+            b.write(m.read())
     
     # Integrity Check
     with open(ACTIVE_NOTARY_MASTER_FILE, 'rb') as master:
@@ -131,10 +131,11 @@ def backup_master_notary_file()->None:
     add_log(msg)
 
 
-def update_master_notary_file(json_data: list[dict])->None:
+def update_master_notary_file(json_file: Path)->None:
 
-    with open(ACTIVE_NOTARY_MASTER_FILE, 'wb', encoding='utf-8') as master:
-        json.dump(json_data, master, indent=2)
+    with open(ACTIVE_NOTARY_MASTER_FILE, 'w', encoding='utf-8') as master:
+        with open(json_file, 'r', encoding='utf-8') as new:
+            master.write(new.read())
 
 
 if __name__ == "__main__":
@@ -143,17 +144,17 @@ if __name__ == "__main__":
     zip_bytes: bytes = get_active_notary_list()
 
     # Extract Text File from Archive
-    active_notary_text_bytes: bytes = extract_notary_list(zip_bytes)
+    active_notary_text_file: str = extract_notary_list(zip_bytes)
     
     # Active Notary JSON Output File
-    active_notary_json_file: str = f"{TEMPDIR}/notaries_{filedate()}.json"
+    active_notary_json_file: Path = Path(f"{TEMPDIR}/notaries_{filedate()}.json")
 
     # Convert Text File to JSON Format
-    active_notary_json_data: list[dict] = convert_text_to_json(active_notary_text_bytes, active_notary_json_file)
+    convert_text_to_json(active_notary_text_file, active_notary_json_file)
     
     # Backup & Update Active Notary File
     backup_master_notary_file()
-    update_master_notary_file(active_notary_json_data)
+    update_master_notary_file(active_notary_json_file)
     
     # Log Success
     msg: str = f"[OK] Active Notary Listing Successfully Updated."
