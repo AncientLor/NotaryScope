@@ -11,6 +11,17 @@ async function loadData() {
   renderCards();
 }
 
+function toCamelCase(text) {
+  return text.split(/[-_\s]/)
+    .map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase();
+      }
+      return word.charAt(0).toUpperCase + word.slice(1).toLowerCase;
+    })
+    .join('');
+}
+
 function renderCards() {
   const container = document.getElementById('cards-container');
   container.innerHTML = "";
@@ -23,14 +34,19 @@ function renderCards() {
     const card = document.createElement('div');
     card.className = "bg-white dark:bg-gray-800 p-4 rounded-2xl shadow border dark:border-gray-700";
     card.innerHTML = `
-      <h4 class="text-l font-bold mb-1" style="color: #E5E5E5; line-height: 1.0;">${n["Notary Name"] || "Unnamed"}</h4>
-      <div style="line-height: 1.5">
-        <span class="text-sm text-gray-500 dark:text-gray-300 mb-1" style="color: #FFCB3C;">#${n["Commission Nbr"]}</span>
-        <span class="text-sm" style="color: #BFBDC1;"><i> | Expires ${n["Expiration Date"]}</i></span>
+      <div class="flex flex-col sm:flex-row justify-between" style="align-items: flex-end; margin-bottom: 2px">
+        <h2 class="text-l" style="text-align: left; font-weight: bolder; color: #E5E5E5;">${n["Notary Name"] || "Unnamed"}</h2>
+        <p class="text-sm" style="text-align: right; font-weight: 600; font-style: italic; color: #FFCB3C;">#${n["Commission Nbr"]}</p>
+      </div>
+      <hr style="border-top: 2.5px solid rgba(229, 229, 229, 0.51);">
+      <div style="margin-bottom: 2px; margin-top: 1px;">
+        <p class="text-sm" style="color: #BFBDC1;">Expires ${n["Expiration Date"]}</p>
       </div>
       <p class="text-sm text-gold-600" style="color: #E5E5E5;">🏢 ${n["Business Name"] || "Independent"}</p>
-      <p class="text-sm" style="color: #E5E5E5;">📍 ${n["City"]}, ${n["State"]} ${n["Zip Code"]}</p>
-      
+      <div>
+        <span class="text-sm">📍 </span>
+        <span class="text-sm" style="color: #E5E5E5;">${n["City"]}, ${n["State"]}</address></span>
+      </div>    
     `;
     container.appendChild(card);
   });
