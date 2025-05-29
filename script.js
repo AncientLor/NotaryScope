@@ -12,17 +12,6 @@ async function loadData() {
   renderCards();
 }
 
-function toCamelCase(text) {
-  return text.split(/[-_\s]/)
-    .map((word, index) => {
-      if (index === 0) {
-        return word.toLowerCase();
-      }
-      return word.charAt(0).toUpperCase + word.slice(1).toLowerCase;
-    })
-    .join('');
-}
-
 function renderCards() {
   const container = document.getElementById('cards-container');
   container.innerHTML = "";
@@ -40,12 +29,12 @@ function renderCards() {
         <p title="Notary Name" class="text" style="font-size: 17px; font-weight: bolder; color: #dddddd;">${n["Notary Name"] || "Unnamed"}</p>
         <p title="Commission Number" class="text-m" style="font-weight: 400; font-style: normal; color: #ffbf00;">#${n["Commission Nbr"]}</p>
       </div>
-      <hr style="margin-bottom: 10px; border-top: 3px solid rgba(154, 135, 183, 0.8);">
-      <div class="flex flex-col sm:flex-col justify-center items-left">
-        <p id="notary-business" title="Business Title" class="text-sm mb-2" style="color: #dddddd;">💼 ${n["Business Name"] || "Independent"}</p>
-        <p id="notary-location" title="City of Operation" class="text-sm mb-2" style="color: #dddddd;">📍 ${n["City"]}, ${n["State"]}</p>
+      <hr style="margin-bottom: 8px; border-top: 3px solid rgba(154, 135, 183, 0.8);">
+      <div class="flex flex-col sm:flex-col justify-center items-left mb-1">
+        <p id="notary-business" title="Business Title" class="text-sm" style="color: #dddddd;">💼 ${n["Business Name"] || "Independent"}</p>
+        <p id="notary-location" title="City of Operation" class="text-sm" style="color: #dddddd;">📍 ${n["City"]}, ${n["State"]}</p>
+        <p id="notary-expiration" title="Expiration Date" class="text-sm" style="color: #dddddd;">⏳ Expires on ${n["Expiration Date"]}</p>
       </div>
-      <p id="notary-expiration" title="Expiration Date" class="text-sm mb-2" style="color: #dddddd;">⏳ <i>Valid until ${n["Expiration Date"]}<i></p>
       `;
     container.appendChild(card);
   });
@@ -82,7 +71,7 @@ document.getElementById('perPage').addEventListener('change', (e) => {
 });
 
 document.getElementById('stateSelect').addEventListener('change', (e) => {
-  perPage = parseInt(e.target.value);
+  stateSelect = e.target.value;
   currentPage = 1;
   renderCards();
 });

@@ -6,6 +6,7 @@ import zipfile
 import io
 from pathlib import Path
 from hashlib import file_digest
+import string
 
 WORKDIR: Path = Path(__file__).parent     # Script Directory -> /FULL/PATH/NotaryScope/util
 PROOT: Path = WORKDIR.parent              # Project Root -> /FULL/PATH/NotaryScope
@@ -92,14 +93,25 @@ def convert_text_to_json(input_text, output_json)->list[dict]:
             msg: str = f"[WARNING] Skipping malformed line: {line}"
             add_log(msg)
 
+    # Apply Camel Case Format to Business Names
+    for e in entries:
+        bn = e['Business Name'].split(' ')
+        cl = []
+        if bn != '': 
+            for n in bn:
+                if n == "UPS":
+                    cl.append(n)
+                else:
+                    cl.append(n.capitalize())
+            cc = ' '.join(cl)
+            e['Business Name'] = cc
+
     # Write to JSON File
     with open(output_json, 'w', encoding='utf-8') as outfile:
         json.dump(entries, outfile, indent=2)
 
     msg: str = f"[OK] Conversion complete. {len(entries)} entries written to {output_json}"
     add_log(msg)
-
-    
 
 
 def backup_master_notary_file()->None:
