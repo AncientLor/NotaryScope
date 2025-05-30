@@ -24,7 +24,7 @@ function renderCards() {
     const card = document.createElement('div');
     // deepcode ignore DOMXSS: Static input data controlled by server.
     if (n["Notary Name"] === "Stone, Loren") {
-      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow-lg border border-2 border-amber-4 00";
+      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow-lg border border-2 border-amber-400";
       card.innerHTML = `
       <div class="flex flex-col sm:flex-row justify-between" style="margin-bottom: 10px; align-items: flex-end;">
         <p title="Notary Name" class="text" style="font-size: 17px; font-weight: bolder; color: #dddddd;">${n["Notary Name"] || "Unnamed"}</p>

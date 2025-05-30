@@ -6,7 +6,7 @@ import zipfile
 import io
 from pathlib import Path
 from hashlib import file_digest
-import string
+
 
 WORKDIR: Path = Path(__file__).parent     # Script Directory -> /FULL/PATH/NotaryScope/util
 PROOT: Path = WORKDIR.parent              # Project Root -> /FULL/PATH/NotaryScope
