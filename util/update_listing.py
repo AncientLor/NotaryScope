@@ -1,4 +1,4 @@
-from constants import *
+from constants import TEMPDIR
 from log_util import add_log, filedate
 from get_notary_list import get_active_notary_archive, extract_notary_list
 from backup_and_replace import backup_master_notary_file, update_master_notary_file
@@ -15,7 +15,10 @@ from sys import exit
 
 if __name__ == "__main__":
 
+    # Check/Create Project Directories
     setup_dirs()
+    
+    # Log Session Header
     add_log('', first=True)
 
     # Download Current Active Notary Archive
