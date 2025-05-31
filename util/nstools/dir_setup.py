@@ -1,4 +1,4 @@
-from constants import BACKUPDIR, TEMPDIR, LOGDIR, DBDIR
+from .constants import BACKUPDIR, TEMPDIR, LOGDIR, DBDIR
 
 # Create Directories if Not Present
 def setup_dirs(): 

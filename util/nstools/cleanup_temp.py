@@ -1,5 +1,5 @@
-from constants import TEMPDIR
-from log_util import add_log
+from .constants import TEMPDIR
+from .log_util import add_log
 from shutil import rmtree
 
 #############################

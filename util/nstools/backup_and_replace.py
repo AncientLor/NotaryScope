@@ -1,5 +1,5 @@
-from constants import ACTIVE_NOTARY_MASTER_FILE, BACKUPDIR
-from log_util import *
+from .constants import ACTIVE_NOTARY_MASTER_FILE, BACKUPDIR
+from .log_util import *
 from pathlib import Path
 from hashlib import file_digest
 from shutil import copyfile
