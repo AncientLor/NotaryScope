@@ -6,7 +6,7 @@ let stateSelect = "CA";
 
 // Load data and initialize
 async function loadData() {
-  const response = await fetch('notaries.json');
+  const response = await fetch('/db/notaries.json');
   notaries = await response.json();
   filtered = [...notaries];
   renderCards();
@@ -109,4 +109,3 @@ document.getElementById('search').addEventListener('input', (e) => {
 });
 
 loadData();
-
