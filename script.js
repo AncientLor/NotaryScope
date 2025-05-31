@@ -6,7 +6,7 @@ let stateSelect = "CA";
 
 // Load data and initialize
 async function loadData() {
-  const response = await fetch('notaries.json');
+  const response = await fetch('/db/notaries.json');
   notaries = await response.json();
   filtered = [...notaries];
   renderCards();
@@ -23,6 +23,7 @@ function renderCards() {
   currentItems.forEach(n => {
     const card = document.createElement('div');
     // deepcode ignore DOMXSS: Static input data controlled by server.
+    
     if (n["Notary Name"] === "Stone, Loren") {
       card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow-lg border border-2 border-amber-400";
       card.innerHTML = `
@@ -30,7 +31,9 @@ function renderCards() {
         <p title="Notary Name" class="text" style="font-size: 17px; font-weight: bolder; color: #dddddd;">${n["Notary Name"] || "Unnamed"}</p>
         <p title="Commission Number" class="text-m" style="font-weight: 400; font-style: normal; color: #ffbf00;">#${n["Commission Nbr"]}</p>
       </div>
+      
       <hr style="margin-bottom: 8px; border-top: 3px solid rgba(154, 135, 183, 0.8);">
+      
       <div class="flex flex-col sm:flex-col justify-center items-left mb-1">
         <p id="notary-business" title="Business Title" class="text-sm" style="color: #dddddd;">💼 ${n["Business Name"] || "Independent"}</p>
         <p id="notary-location" title="City of Operation" class="text-sm" style="color: #dddddd;">📍 ${n["City"]}, ${n["State"]}</p>
@@ -38,6 +41,7 @@ function renderCards() {
       </div>
       `;
     }
+    
     else {
       card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-purple-300";
       card.innerHTML = `
@@ -45,7 +49,9 @@ function renderCards() {
         <p title="Notary Name" class="text" style="font-size: 17px; font-weight: bolder; color: #dddddd;">${n["Notary Name"] || "Unnamed"}</p>
         <p title="Commission Number" class="text-m" style="font-weight: 400; font-style: normal; color: #ffbf00;">#${n["Commission Nbr"]}</p>
       </div>
+      
       <hr style="margin-bottom: 8px; border-top: 3px solid rgba(154, 135, 183, 0.8);">
+      
       <div class="flex flex-col sm:flex-col justify-center items-left mb-1">
         <p id="notary-business" title="Business Title" class="text-sm" style="color: #dddddd;">💼 ${n["Business Name"] || "Independent"}</p>
         <p id="notary-location" title="City of Operation" class="text-sm" style="color: #dddddd;">📍 ${n["City"]}, ${n["State"]}</p>
@@ -103,4 +109,3 @@ document.getElementById('search').addEventListener('input', (e) => {
 });
 
 loadData();
-
