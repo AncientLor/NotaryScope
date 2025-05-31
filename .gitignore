@@ -1,0 +1,6 @@
+/backup/
+/backup/*
+/log/
+/log/*.log
+/util/nstools/__pycache__/
+/util/nstools/__pycache__/*
