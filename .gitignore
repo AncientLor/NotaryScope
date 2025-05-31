@@ -4,3 +4,4 @@
 /log/*.log
 /util/nstools/__pycache__/
 /util/nstools/__pycache__/*
+*.ps1
