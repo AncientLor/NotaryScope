@@ -1,4 +1,4 @@
-from constants import LOGFILE
+from .constants import LOGFILE
 from time import strftime
 
 # Append Message to Logfile

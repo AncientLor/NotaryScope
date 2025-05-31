@@ -1,4 +1,4 @@
-from log_util import add_log
+from .log_util import add_log
 from pathlib import Path
 from json import dump
 

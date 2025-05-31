@@ -1,8 +1,8 @@
-from constants import TEMPDIR, ACTIVE_NOTARY_LIST_URL
+from .constants import TEMPDIR, ACTIVE_NOTARY_LIST_URL
 from io import BytesIO
 from zipfile import ZipFile
 from pathlib import Path
-from log_util import add_log, filedate
+from .log_util import add_log, filedate
 from requests import Response, request
 
 ##################################################

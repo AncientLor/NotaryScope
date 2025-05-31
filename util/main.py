@@ -1,10 +1,4 @@
-from constants import *
-from log_util import add_log, filedate
-from get_notary_list import get_active_notary_archive, extract_notary_list
-from backup_and_replace import backup_master_notary_file, update_master_notary_file
-from cleanup_temp import purge_temp_dir
-from notary_to_json import convert_text_to_json
-from dir_setup import setup_dirs
+from nstools import *
 from pathlib import Path
 from sys import exit
 
@@ -15,7 +9,10 @@ from sys import exit
 
 if __name__ == "__main__":
 
+    # Check/Create Project Directories
     setup_dirs()
+    
+    # Log Session Header
     add_log('', first=True)
 
     # Download Current Active Notary Archive

@@ -1,7 +1,7 @@
 from pathlib import Path
 
-WORKDIR: Path = Path(__file__).parent     # Script Directory -> /FULL/PATH/NotaryScope/util
-PROOT: Path = WORKDIR.parent              # Project Root -> /FULL/PATH/NotaryScope
+WORKDIR: Path = Path(__file__).parent.parent     # Script Directory -> /FULL/PATH/NotaryScope/util
+PROOT: Path = WORKDIR.parent                    # Project Root -> /FULL/PATH/NotaryScope
 BACKUPDIR: Path = Path(f"{PROOT}/backup")
 TEMPDIR: Path = Path(f"{PROOT}/tmp")
 LOGDIR: Path = Path(f"{PROOT}/log")
