@@ -1,0 +1,6 @@
+<Directory /db>
+  Options -Indexes
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</Directory>
