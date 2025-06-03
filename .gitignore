@@ -5,3 +5,4 @@
 /util/nstools/__pycache__/
 /util/nstools/__pycache__/*
 *.ps1
+/assets/*.png
