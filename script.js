@@ -11,7 +11,8 @@ async function loadData() {
   filtered = [...notaries];
   renderCards();
 }
-
+i
+// Render Title Cards 
 function renderCards() {
   const container = document.getElementById('cards-container');
   container.innerHTML = "";
@@ -24,6 +25,7 @@ function renderCards() {
     const card = document.createElement('div');
     // deepcode ignore DOMXSS: Static input data controlled by server.
     
+    // Developer Creds ;)
     if (n["Notary Name"] === "Stone, Loren") {
       card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow-lg border border-2 border-amber-400";
       card.innerHTML = `
