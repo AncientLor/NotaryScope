@@ -11,18 +11,14 @@ async function loadData() {
   filtered = [...notaries];
   renderCards();
 }
-<<<<<<< HEAD
-i
-// Render Title Cards 
-=======
 
-// Display Card Placeholder While Data Loads 
+// Display Card Placeholder While Data Loads
 function renderPlaceholder() {
   const container = document.getElementById('cards-container');
-  
+
   for (let i = 0; i < 15; i++) {
     const cardPlaceholder = document.createElement('div');
-    cardPlaceholder.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-purple-300"; 
+    cardPlaceholder.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-purple-300";
     cardPlaceholder.innerHTML = `
       <div class="animate-pulse">
         <div class="flex flex-row justify-between items-center mt-2 mb-5 gap-4" style="margin-bottom: 10px; align-items: flex-end;">
@@ -45,10 +41,9 @@ function renderPlaceholder() {
 }
 
 // Render Title Cards
->>>>>>> dev
 function renderCards() {
   const container = document.getElementById('cards-container');
-  
+
   container.innerHTML = "";
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
@@ -56,32 +51,12 @@ function renderCards() {
 
   currentItems.forEach(n => {
     const card = document.createElement('div');
-    
-<<<<<<< HEAD
-    // Developer Creds ;)
-    if (n["Notary Name"] === "Stone, Loren") {
-      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow-lg border border-2 border-amber-400";
-      card.innerHTML = `
-      <div class="flex flex-col sm:flex-row justify-between" style="margin-bottom: 10px; align-items: flex-end;">
-        <p title="Notary Name" class="text" style="font-size: 17px; font-weight: bolder; color: #dddddd;">${n["Notary Name"] || "Unnamed"}</p>
-        <p title="Commission Number" class="text-m" style="font-weight: 400; font-style: normal; color: #ffbf00;">#${n["Commission Nbr"]}</p>
-      </div>
-      
-      <hr style="margin-bottom: 8px; border-top: 3px solid rgba(154, 135, 183, 0.8);">
-      
-      <div class="flex flex-col sm:flex-col justify-center items-left mb-1">
-        <p id="notary-business" title="Business Title" class="text-sm" style="color: #dddddd;">💼 ${n["Business Name"] || "Independent"}</p>
-        <p id="notary-location" title="City of Operation" class="text-sm" style="color: #dddddd;">📍 ${n["City"]}, ${n["State"]}</p>
-        <p id="notary-expiration" title="Expiration Date" class="text-sm" style="color: #dddddd;">⏳ Expires on ${n["Expiration Date"]}</p>
-      </div>
-      `;
-=======
-    if (n["Commission Nbr"] === "2485508") { 
-      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-amber-400"; 
->>>>>>> dev
+
+    if (n["Commission Nbr"] === "2485508") {
+      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-amber-400";
     }
-    
-    else { 
+
+    else {
       card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-purple-300";
     }
 
@@ -99,8 +74,8 @@ function renderCards() {
     `;
     container.appendChild(card);
   });
-  
-  updatePagination();  
+
+  updatePagination();
 
 }
 
