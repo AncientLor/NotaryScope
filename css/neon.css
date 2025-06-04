@@ -9,6 +9,7 @@
     0 0 92px #c084fc,
     0 0 102px #c084fc;
 }
+
 .neonEmoji {
   color: #e5ceff;
   text-shadow:
@@ -18,15 +19,4 @@
     0 0 82px #c084fc,
     0 0 92px #c084fc;
   padding: -10px;
-}
-.neonImage {
-  filter: 
-    drop-shadow(0 0 7px #d8b4fe)
-    drop-shadow(0 0 10px #d8b4fe)
-    drop-shadow(0 0 21px #d8b4fe)
-    drop-shadow(0 0 42px #d8b4fe)
-    drop-shadow(0 0 82px #c084fc)
-    drop-shadow(0 0 92px #c084fc)
-    drop-shadow(0 0 102px #c084fc);
-  padding: -20px;
 }
