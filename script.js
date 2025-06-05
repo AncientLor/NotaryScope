@@ -12,34 +12,6 @@ async function loadData() {
   renderCards();
 }
 
-// Display Card Placeholder While Data Loads
-function renderPlaceholder() {
-  const container = document.getElementById('cards-container');
-
-  for (let i = 0; i < 15; i++) {
-    const cardPlaceholder = document.createElement('div');
-    cardPlaceholder.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-purple-300";
-    cardPlaceholder.innerHTML = `
-      <div class="animate-pulse">
-        <div class="flex flex-row justify-between items-center mt-2 mb-5 gap-4" style="margin-bottom: 10px; align-items: flex-end;">
-          <p class="w-52 h-3 bg-gray-500 rounded-2xl"></p>
-          <p class="w-24 h-3 bg-gray-500 rounded-2xl"></p>
-        </div>
-        <div class="flex flex-col mt-2 mb-2">
-          <hr class="w-full h-1 mt-1 mb-4 border-0 bg-gray-500"></hr>
-          <ul class="space-y-3">
-            <li class="w-24 h-2 bg-gray-500 rounded-full"></li>
-            <li class="w-36 h-2 bg-gray-500 rounded-full"></li>
-            <li class="w-48 h-2 bg-gray-500 rounded-full"></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    `;
-    container.appendChild(cardPlaceholder);
-  }
-}
-
 // Render Title Cards
 function renderCards() {
   const container = document.getElementById('cards-container');
@@ -122,5 +94,4 @@ document.getElementById('search').addEventListener('input', (e) => {
   renderCards();
 });
 
-renderPlaceholder();
 loadData();
