@@ -1,6 +1,12 @@
-.bungee-outline-title {
-  font-family: "Bungee Outline", sans-serif;
-  font-weight: 800;
+@font-face {
+  font-family: 'Bungee Outline';
   font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/assets/bungee-outline.woff2) format('woff2');
+}
+.bungee-outline-title {
+  font-family: "Bungee Outline";
+  font-weight: 800;
   font-size: 48px;
 }

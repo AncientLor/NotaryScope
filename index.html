@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: rgb(24, 24, 25);">
 
 <head>
   <meta charset="UTF-8">
+  <meta
+  name="description"
+  content="Easily discover, locate, and verify active Notaries Public in California with this simple Notary search tool.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/assets/telescope-1.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/bungee-outline.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/space-bg.jpg" as="image" type="image/jpg">
+  <link rel="preload" href="/db/notaries.json" as="fetch" type="application/json" crossorigin>
   <link rel="stylesheet" href="/css/main.css">
   <title>Notary Scope</title>
 </head>
 
-<body class="bg-[url(/assets/space-bg.jpg)] bg-fixed text-white">
+<body style="background-image: url(/assets/space-bg.jpg); background-attachment: fixed;">
   <div class="max-w-7xl mx-auto p-4">
 
     <!-- Site Title -->
@@ -35,7 +38,7 @@
         <option value="250">250</option>
       </select>
       <a class="inline" href="https://github.com/AncientLor/NotaryScope" target="_blank">
-        <img class="self-end invert" src="/assets/github.svg" alt="Github" style="height: 30px;">
+        <img class="self-end" src="/assets/github-mark-white.svg" alt="Github" style="height: 30px; width: 30px">
       </a>
     </div>
 
