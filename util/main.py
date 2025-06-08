@@ -18,6 +18,9 @@ if __name__ == "__main__":
     # Download Current Active Notary Archive
     zip_bytes: bytes = get_active_notary_archive()
 
+    # Check if Archive Has Been Modified
+    compare_archive_hashes(zip_bytes)
+    
     # Extract Text File from Archive
     active_notary_text_file: Path = extract_notary_list(zip_bytes)
     

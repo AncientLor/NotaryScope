@@ -5,3 +5,4 @@ from .backup_and_replace import *
 from .cleanup_temp import *
 from .notary_to_json import *
 from .dir_setup import *
+from .check_if_updated import *
