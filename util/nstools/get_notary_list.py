@@ -5,6 +5,7 @@ from pathlib import Path
 from .log_util import add_log, filedate
 from requests import Response, request
 
+
 ##################################################
 #### Download Today's Active Notaries Archive ####
 ##################################################
@@ -18,9 +19,8 @@ def get_active_notary_archive()->bytes:
     if r.status_code != 200:
         add_log(f"[ERROR] Status Code: {r.status_code} Error Message: {r.content}")
         exit(1)
-
+    
     return r.content
-
 
 ###################################
 #### Extract Text From Archive ####
