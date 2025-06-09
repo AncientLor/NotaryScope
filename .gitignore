@@ -2,7 +2,7 @@
 /backup/
 /backup/*
 /log/
-/log/*.log
+/log/*
 /util/nstools/__pycache__/
 /util/nstools/__pycache__/*
 /tmp/*
