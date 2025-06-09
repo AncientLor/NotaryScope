@@ -7,5 +7,3 @@
 /util/nstools/__pycache__/*
 /tmp/*
 /tmp/
-/web/db/*
-!/web/db/
