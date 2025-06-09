@@ -5,6 +5,7 @@
 /util/nstools/__pycache__/
 /util/nstools/__pycache__/*
 /tmp/*
-*.ps1
+/util/deploy/*
+/util/deploy/
 /db/*
 !/db/
