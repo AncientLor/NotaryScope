@@ -1,5 +1,0 @@
-@import "./neon.css";
-@import "./textstyle.css";
-@import "tailwindcss" source(none);
-@source "../../index.html";
-@source "../../script.js";
