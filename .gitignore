@@ -1,3 +1,4 @@
+.gitignore
 /backup/
 /backup/*
 /log/
@@ -5,7 +6,6 @@
 /util/nstools/__pycache__/
 /util/nstools/__pycache__/*
 /tmp/*
-/util/deploy/*
-/util/deploy/
-/db/*
-!/db/
+/tmp/
+/web/db/*
+!/web/db/
