@@ -3,30 +3,23 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta
-  name="description"
-  content="Easily discover, locate, and verify active Notaries Public in California with this simple Notary search tool.">
+  <meta name="description" content="Explore, discover, and verify active notaries public in California with this notary lookup tool.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/assets/telescope-1.ico" type="image/x-icon">
   <link rel="preload" href="/assets/bungee-outline.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/db/notaries.json" as="fetch" type="application/json" crossorigin>
   <link rel="stylesheet" href="/css/main.css">
   <title>Notary Scope</title>
-  <style>
-    body {
-      background-image: url(/assets/space-bg.webp);
-      background-attachment: fixed;
-    }
-  </style>
 </head>
 
-<body>
+<body class="bg-linear-to-b bg-fixed from-slate-950 from-15% to-gray-950 to-100%">
   <script src="script.js" defer></script>
   <div class="max-w-7xl mx-auto p-4">
 
     <!-- Site Title -->
-    <div class="flex flex-row justify-center items-center gap-1 mb-2 mt-2">
-      <h1 class="bungee-outline-title text-5xl neonText">Notary Scope</h1>
+    <div class="flex flex-col justify-center items-center mb-2 mt-2">
+      <p class="bungee-outline-title neonTitle text-5xl tracking-[.01em]">Notary Scope</p>
+      <p class="neonText text-sm italic w-fit">Discover</p>
     </div>
 
     <!-- Search + Per Page Selector -->
@@ -49,7 +42,7 @@
     <!-- Cards -->
     <div id="cards-container" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2"></div>
     
-    <!-- Card Place Holders-->
+    <!-- Card Skeleton Loaders -->
     <script>
       const container = document.getElementById('cards-container');
       for (let i = 0; i < 12; i++) {

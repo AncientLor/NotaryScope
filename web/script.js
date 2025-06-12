@@ -25,11 +25,11 @@ function renderCards() {
     const card = document.createElement('div');
 
     if (n["Commission Nbr"] === "2485508") {
-      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-amber-400";
+      card.className = "bg-gray-800/30 backdrop-blur-lg p-4 rounded-2xl shadow border-2 border-solid border-amber-400";
     }
 
     else {
-      card.className = "bg-gray-800/60 backdrop-blur-lg p-4 rounded-2xl shadow border border-2 border-purple-300";
+      card.className = "bg-gray-800/30 backdrop-blur-lg p-4 rounded-2xl shadow border-2 border-solid border-violet-300/75";
     }
 
     card.innerHTML = `

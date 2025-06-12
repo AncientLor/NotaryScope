@@ -1,11 +1,16 @@
-.neonText {
+.neonTitle {
   color: #eeeeee;
   text-shadow:
-    0 0 7px #d8b4fe,
-    0 0 10px #d8b4fe,
-    0 0 21px #d8b4fe,
-    0 0 42px #d8b4fe,
-    0 0 82px #c084fc,
-    0 0 92px #c084fc,
-    0 0 102px #c084fc;
+    0 0 6px #8000ff,
+    0 0 16px #7614d7,  
+    0 0 32px #731cca,
+    0 0 72px #491f73,
+    0 0 96px #3b1e58,
+    0 0 108px #191121;
+}
+.neonText {
+  color: #ffbf00;
+  text-shadow:
+    0 0 1px #ffbf00,
+    0 0 12px #fff1c7;
 }
