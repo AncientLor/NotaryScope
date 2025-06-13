@@ -2,7 +2,7 @@
 @layer properties;
 .neonTitle {
   color: #eeeeee;
-  text-shadow: 0 0 6px #8000ff, 0 0 16px #7614d7, 0 0 32px #731cca, 0 0 72px #491f73, 0 0 96px #3b1e58, 0 0 108px #191121;
+  text-shadow: 0 0 6px #8000ff, 0 0 16px #7614d7, 0 0 32px #731cca, 0 0 72px #731cca, 0 0 96px #3b1e58, 0 0 108px #191121;
 }
 .neonText {
   color: #ffbf00;
@@ -37,6 +37,8 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-7xl: 80rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-5xl: 3rem;
@@ -272,6 +274,9 @@
   .w-full {
     width: 100%;
   }
+  .w-max {
+    width: max-content;
+  }
   .max-w-7xl {
     max-width: var(--container-7xl);
   }
@@ -301,6 +306,9 @@
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
   }
   .space-y-3 {
     :where(& > :not(:last-child)) {
@@ -408,15 +416,16 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
   .tracking-\[\.01em\] {
     --tw-tracking: .01em;
     letter-spacing: .01em;
   }
   .text-white {
     color: var(--color-white);
-  }
-  .italic {
-    font-style: italic;
   }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
