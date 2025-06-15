@@ -1,3 +1,4 @@
+git status | grep "origin/dev" && git commit -a -m "Listing Update";
 git checkout main;
 python "util/main.py";
 git add "web/db/notaries.json";
